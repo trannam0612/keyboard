@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.FlutterEngineCache;
 import io.flutter.plugin.common.MethodChannel;
 
 public class MainActivity extends FlutterActivity {
@@ -23,6 +25,17 @@ public class MainActivity extends FlutterActivity {
                 result.success("Hellop");
             }
         });
+
+        // Khởi tạo Flutter Engine
+        FlutterEngine flutterEngine = new FlutterEngine(this);
+
+        // Đặt tên cho Engine (có thể là bất kỳ chuỗi)
+        String engineId = "my_engine_id";
+
+        // Đặt Engine vào bộ nhớ cache
+        FlutterEngineCache
+                .getInstance()
+                .put(engineId, flutterEngine);
     }
 
     private void helloFromNative() {

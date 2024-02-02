@@ -27,3 +27,9 @@ plugins {
 }
 
 include ":app"
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir.parentFile,
+        'flutter_keyboard/.android/include_flutter.groovy'
+))
